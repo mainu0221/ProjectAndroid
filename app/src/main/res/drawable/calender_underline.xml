@@ -1,0 +1,18 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 투명한 배경 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+    <!-- 밑줄 -->
+    <item
+        android:top="30dp"
+        android:left="10dp"
+        android:right="10dp"> <!-- 텍스트 아래 에만 밑줄 추가 -->
+        <shape android:shape="rectangle">
+            <size android:height="0.2dp"/>
+            <solid android:color="@color/UnderLine"/>
+        </shape>
+    </item>
+</layer-list>

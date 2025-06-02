@@ -1,113 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_image">
 
-    <include
-        android:id="@+id/customCalender_main"
-        layout="@layout/view_main_calender" />
-
     <TextView
-        android:id="@+id/textview_main_notice"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:gravity="center_vertical"
-        android:text="@string/main_calender_notice"
-        android:textSize="12sp"
-        android:textColor="@color/gray"
-        android:shadowDx="3"
-        android:shadowDy="3"
-        android:shadowRadius="3"
-        app:layout_constraintTop_toBottomOf="@+id/customCalender_main"
-        app:layout_constraintBottom_toTopOf="@+id/textview_main_dateWeather"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textview_main_dateWeather"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="22dp"
-        android:layout_marginStart="5dp"
-        android:gravity="center_vertical"
-        android:text="@string/main_selected_date"
-        android:textSize="23sp"
+        android:id="@+id/textview_checklist_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:padding="16dp"
+        android:text="@string/checklist_title"
         android:textColor="@color/black"
-        android:shadowDx="3"
-        android:shadowDy="3"
-        android:shadowRadius="3"
-        app:layout_constraintTop_toBottomOf="@+id/textview_main_notice"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textview_main_scrollNotice"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginStart="10dp"
-        android:text="@string/main_scroll_notice"
-        android:textSize="12sp"
+        android:id="@+id/textview_checklist_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="@string/checklist_notice"
         android:textColor="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/cardview_main_weatherScroll" />
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerview_checklist_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_checklist_title"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview_main_weatherScroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_checklist_list"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintBottom_toTopOf="@id/cardview_all_bottomMenu"
-        app:cardBackgroundColor="@null">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/main_scroll_not_available"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:background="@drawable/menu_background_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
-
-        <HorizontalScrollView
-            android:id="@+id/scrollview_main_in_cardview"
-            android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:layout_marginBottom="20dp"
-            android:padding="10dp"
-            android:background="@drawable/menu_background_image"
-            android:scrollbars="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" >
-
-            <LinearLayout
-                android:id="@+id/linearLayout_main_in_scrollview"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <include layout="@layout/item_main_scroll" />
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-    </androidx.cardview.widget.CardView>
+        android:layout_height="623dp"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardview_all_bottomMenu"
+        app:layout_constraintTop_toBottomOf="@+id/textview_checklist_notice"
+        app:layout_constraintVertical_bias="0.742"
+        tools:layout_editor_absoluteX="-5dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_all_bottomMenu"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
