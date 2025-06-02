@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- 8개의 아이템 배치 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_mainScrollItem_layout1"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- 시간 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_time1"
+                android:layout_width="126dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/scroll_time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 날씨 아이콘 -->
+            <ImageView
+                android:contentDescription="@string/scroll_contentDescription"
+                android:id="@+id/imageview_mainScrollItem_weatherIcon1"
+                android:layout_width="84dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/menu_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_time1" />
+
+            <TextView
+                android:id="@+id/textview_mainScrollItem_description1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_notice"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_mainScrollItem_weatherIcon1" />
+
+            <!-- 온도 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_temperature1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_temperature"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_description1" />
+
+            <!-- 강수 확률과 이미지 -->
+            <LinearLayout
+                android:id="@+id/linearLayout_mainScrollItem_rainInfoLine1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_temperature1">
+
+                <ImageView
+                    android:contentDescription="@string/scroll_raindrop_contentDescription"
+                    android:id="@+id/imageview_mainScrollItem_rainIcon1"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/raindrop_icon" />
+
+                <TextView
+                    android:id="@+id/textview_mainScrollItem_rainText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/scroll_weather_raindrop"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_mainScrollItem_layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- 시간 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_time2"
+                android:layout_width="126dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/scroll_time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 날씨 아이콘 -->
+            <ImageView
+                android:contentDescription="@string/scroll_contentDescription"
+                android:id="@+id/imageview_mainScrollItem_weatherIcon2"
+                android:layout_width="84dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/menu_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_time2" />
+
+            <TextView
+                android:id="@+id/textview_mainScrollItem_description2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_notice"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_mainScrollItem_weatherIcon2" />
+
+            <!-- 온도 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_temperature2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_temperature"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_description2" />
+
+            <!-- 강수 확률과 이미지 -->
+            <LinearLayout
+                android:id="@+id/linearLayout_mainScrollItem_rainInfoLine2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_temperature2">
+
+                <ImageView
+                    android:contentDescription="@string/scroll_raindrop_contentDescription"
+                    android:id="@+id/imageview_mainScrollItem_rainIcon2"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/raindrop_icon" />
+
+                <TextView
+                    android:id="@+id/textview_mainScrollItem_rainText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/scroll_weather_raindrop"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_mainScrollItem_layout3"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- 시간 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_time3"
+                android:layout_width="126dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/scroll_time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 날씨 아이콘 -->
+            <ImageView
+                android:contentDescription="@string/scroll_contentDescription"
+                android:id="@+id/imageview_mainScrollItem_weatherIcon3"
+                android:layout_width="84dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/menu_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_time3" />
+
+            <TextView
+                android:id="@+id/textview_mainScrollItem_description3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_notice"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_mainScrollItem_weatherIcon3" />
+
+            <!-- 온도 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_temperature3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_temperature"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_description3" />
+
+            <!-- 강수 확률과 이미지 -->
+            <LinearLayout
+                android:id="@+id/linearLayout_mainScrollItem_rainInfoLine3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_temperature3">
+
+                <ImageView
+                    android:contentDescription="@string/scroll_raindrop_contentDescription"
+                    android:id="@+id/imageview_mainScrollItem_rainIcon3"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/raindrop_icon" />
+
+                <TextView
+                    android:id="@+id/textview_mainScrollItem_rainText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/scroll_weather_raindrop"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_mainScrollItem_layout4"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- 시간 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_time4"
+                android:layout_width="126dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/scroll_time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 날씨 아이콘 -->
+            <ImageView
+                android:contentDescription="@string/scroll_contentDescription"
+                android:id="@+id/imageview_mainScrollItem_weatherIcon4"
+                android:layout_width="84dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/menu_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_time4" />
+
+            <TextView
+                android:id="@+id/textview_mainScrollItem_description4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_notice"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_mainScrollItem_weatherIcon4" />
+
+            <!-- 온도 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_temperature4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_temperature"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_description4" />
+
+            <!-- 강수 확률과 이미지 -->
+            <LinearLayout
+                android:id="@+id/linearLayout_mainScrollItem_rainInfoLine4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_temperature4">
+
+                <ImageView
+                    android:contentDescription="@string/scroll_raindrop_contentDescription"
+                    android:id="@+id/imageview_mainScrollItem_rainIcon4"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/raindrop_icon" />
+
+                <TextView
+                    android:id="@+id/textview_mainScrollItem_rainText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/scroll_weather_raindrop"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_mainScrollItem_layout5"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- 시간 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_time5"
+                android:layout_width="126dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/scroll_time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 날씨 아이콘 -->
+            <ImageView
+                android:contentDescription="@string/scroll_contentDescription"
+                android:id="@+id/imageview_mainScrollItem_weatherIcon5"
+                android:layout_width="84dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/menu_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_time5" />
+
+            <TextView
+                android:id="@+id/textview_mainScrollItem_description5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_notice"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_mainScrollItem_weatherIcon5" />
+
+            <!-- 온도 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_temperature5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_temperature"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_description5" />
+
+            <!-- 강수 확률과 이미지 -->
+            <LinearLayout
+                android:id="@+id/linearLayout_mainScrollItem_rainInfoLine5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_temperature5">
+
+                <ImageView
+                    android:contentDescription="@string/scroll_raindrop_contentDescription"
+                    android:id="@+id/imageview_mainScrollItem_rainIcon5"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/raindrop_icon" />
+
+                <TextView
+                    android:id="@+id/textview_mainScrollItem_rainText5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/scroll_weather_raindrop"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_mainScrollItem_layout6"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- 시간 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_time6"
+                android:layout_width="126dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/scroll_time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 날씨 아이콘 -->
+            <ImageView
+                android:contentDescription="@string/scroll_contentDescription"
+                android:id="@+id/imageview_mainScrollItem_weatherIcon6"
+                android:layout_width="84dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/menu_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_time6" />
+
+            <TextView
+                android:id="@+id/textview_mainScrollItem_description6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_notice"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_mainScrollItem_weatherIcon6" />
+
+            <!-- 온도 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_temperature6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_temperature"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_description6" />
+
+            <!-- 강수 확률과 이미지 -->
+            <LinearLayout
+                android:id="@+id/linearLayout_mainScrollItem_rainInfoLine6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_temperature6">
+
+                <ImageView
+                    android:contentDescription="@string/scroll_raindrop_contentDescription"
+                    android:id="@+id/imageview_mainScrollItem_rainIcon6"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/raindrop_icon" />
+
+                <TextView
+                    android:id="@+id/textview_mainScrollItem_rainText6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/scroll_weather_raindrop"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_mainScrollItem_layout7"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- 시간 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_time7"
+                android:layout_width="126dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/scroll_time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 날씨 아이콘 -->
+            <ImageView
+                android:contentDescription="@string/scroll_contentDescription"
+                android:id="@+id/imageview_mainScrollItem_weatherIcon7"
+                android:layout_width="84dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/menu_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_time7" />
+
+            <TextView
+                android:id="@+id/textview_mainScrollItem_description7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_notice"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_mainScrollItem_weatherIcon7" />
+
+            <!-- 온도 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_temperature7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_temperature"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_description7" />
+
+            <!-- 강수 확률과 이미지 -->
+            <LinearLayout
+                android:id="@+id/linearLayout_mainScrollItem_rainInfoLine7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_temperature7">
+
+                <ImageView
+                    android:contentDescription="@string/scroll_raindrop_contentDescription"
+                    android:id="@+id/imageview_mainScrollItem_rainIcon7"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/raindrop_icon" />
+
+                <TextView
+                    android:id="@+id/textview_mainScrollItem_rainText7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/scroll_weather_raindrop"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_mainScrollItem_layout8"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- 시간 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_time8"
+                android:layout_width="126dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/scroll_time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 날씨 아이콘 -->
+            <ImageView
+                android:contentDescription="@string/scroll_contentDescription"
+                android:id="@+id/imageview_mainScrollItem_weatherIcon8"
+                android:layout_width="84dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/menu_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_time8" />
+
+            <TextView
+                android:id="@+id/textview_mainScrollItem_description8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_notice"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_mainScrollItem_weatherIcon8" />
+
+            <!-- 온도 표시 -->
+            <TextView
+                android:id="@+id/textview_mainScrollItem_temperature8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scroll_weather_temperature"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_description8" />
+
+            <!-- 강수 확률과 이미지 -->
+            <LinearLayout
+                android:id="@+id/linearLayout_mainScrollItem_rainInfoLine8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_mainScrollItem_temperature8">
+
+                <ImageView
+                    android:contentDescription="@string/scroll_raindrop_contentDescription"
+                    android:id="@+id/imageview_mainScrollItem_rainIcon8"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/raindrop_icon" />
+
+                <TextView
+                    android:id="@+id/textview_mainScrollItem_rainText8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/scroll_weather_raindrop"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</HorizontalScrollView>

@@ -1,0 +1,146 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- 월, 슬라이드-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <ImageButton
+            android:id="@+id/imageButton_calender_monthLeft"
+            android:layout_width="44dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="40dp"
+            android:contentDescription="@string/calender_contentDescription"
+            android:src="@drawable/calender_left_icon"
+            android:scaleType="centerInside"
+            android:background="#00FFFFFF"
+
+            />
+
+        <TextView
+            android:id="@+id/textview_calender_yearMonth"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:padding="1dp"
+            android:text="@string/calender_year_month"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/imageButton_calender_monthRight"
+            android:layout_width="44dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="40dp"
+            android:contentDescription="@string/calender_contentDescription"
+            android:src="@drawable/calender_right_icon"
+            android:scaleType="centerInside"
+            android:background="#00FFFFFF"/>
+
+
+    </LinearLayout>
+
+    <!-- 요일 -->
+    <LinearLayout
+        android:id="@+id/linearLayout_calender_daysText"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/calender_son_text"
+            android:textSize="20sp"
+            android:textColor="#BE2E22" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/calender_mon_text"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/calender_tue_text"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/calender_wed_text"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/calender_thu_text"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/calender_fri_text"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/calender_sat_text"
+            android:textSize="20sp"
+            android:textColor="@color/teal_700" />
+
+    </LinearLayout>
+
+    <!-- 날짜 표시 영역 -->
+    <GridLayout
+        android:id="@+id/gridLayout_calender_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="7"
+        android:rowCount="6"
+        android:layout_marginTop="8dp">
+
+        <!-- 날짜 텍스트 뷰들이 동적 추가될 예정 -->
+    </GridLayout>
+
+</LinearLayout>
