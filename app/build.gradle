@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         applicationId "com.inhatc.projectandroid"
-        minSdk 35
-        targetSdk 35
+        minSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 

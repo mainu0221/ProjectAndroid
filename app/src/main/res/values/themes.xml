@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.ProjectAndroid" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- 앱의 스타일을 설정 -->
     </style>
 
@@ -11,6 +11,9 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-
-
+    <style name="BottomNavText" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
 </resources>
