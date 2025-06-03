@@ -7,21 +7,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
-
-    private BottomNavigationView bottomNavigationView;
-
+public class CheckActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_check);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.nav_calendar);
-
-        bottomNavigationView.setOnItemSelectedListener(item -> {
+        BottomNavigationView nav = findViewById(R.id.bottomNavigationView);
+        nav.setSelectedItemId(R.id.nav_check);
+        nav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.nav_calendar) {
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
             } else if (id == R.id.nav_weather) {
                 startActivity(new Intent(this, WeatherActivity.class));
@@ -30,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
                 new MainAddActivity().show(getSupportFragmentManager(), "MainAddActivity");
                 return true;
             } else if (id == R.id.nav_check) {
-                startActivity(new Intent(this, CheckActivity.class));
                 return true;
             } else if (id == R.id.nav_settings) {
                 startActivity(new Intent(this, SettingActivity.class));
