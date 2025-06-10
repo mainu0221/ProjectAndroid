@@ -6,23 +6,14 @@
         android:icon="@drawable/menu_calendar_asset"
         android:title="달력" />
     <item
-        android:id="@+id/nav_weather"
-        android:enabled="true"
-        android:icon="@drawable/menu_weather_asset"
-        android:title="날씨" />
-    <item
         android:id="@+id/nav_add"
         android:enabled="true"
         android:icon="@drawable/menu_plus_asset"
         android:title="추가" />
     <item
-        android:id="@+id/nav_check"
+        android:id="@+id/nav_weather"
         android:enabled="true"
-        android:icon="@drawable/menu_check_asset"
-        android:title="체크" />
-    <item
-        android:id="@+id/nav_settings"
-        android:enabled="true"
-        android:icon="@drawable/menu_setting_asset"
-        android:title="설정" />
+        android:icon="@drawable/menu_weather_asset"
+        android:title="날씨" />
+
 </menu>
