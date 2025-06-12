@@ -1,13 +1,15 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <!-- 월, 슬라이드-->
+
+    <!-- 요일 -->
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -17,12 +19,12 @@
             android:id="@+id/imageButton_calender_monthLeft"
             android:layout_width="44dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="20dp"
             android:layout_marginStart="40dp"
-            android:contentDescription="@string/calender_contentDescription"
-            android:src="@drawable/calender_left_icon"
-            android:scaleType="centerInside"
+            android:layout_marginEnd="20dp"
             android:background="#00FFFFFF"
+            android:contentDescription="@string/calender_contentDescription"
+            android:scaleType="centerInside"
+            android:src="@drawable/calender_left_icon"
 
             />
 
@@ -43,15 +45,14 @@
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="40dp"
+            android:background="#00FFFFFF"
             android:contentDescription="@string/calender_contentDescription"
-            android:src="@drawable/calender_right_icon"
             android:scaleType="centerInside"
-            android:background="#00FFFFFF"/>
+            android:src="@drawable/calender_right_icon" />
 
 
     </LinearLayout>
 
-    <!-- 요일 -->
     <LinearLayout
         android:id="@+id/linearLayout_calender_daysText"
         android:layout_width="match_parent"
@@ -66,8 +67,8 @@
             android:gravity="center"
             android:padding="4dp"
             android:text="@string/calender_son_text"
-            android:textSize="20sp"
-            android:textColor="#BE2E22" />
+            android:textColor="#BE2E22"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,8 +77,8 @@
             android:gravity="center"
             android:padding="4dp"
             android:text="@string/calender_mon_text"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,8 +87,8 @@
             android:gravity="center"
             android:padding="4dp"
             android:text="@string/calender_tue_text"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,8 +97,8 @@
             android:gravity="center"
             android:padding="4dp"
             android:text="@string/calender_wed_text"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -106,8 +107,8 @@
             android:gravity="center"
             android:padding="4dp"
             android:text="@string/calender_thu_text"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -116,8 +117,8 @@
             android:gravity="center"
             android:padding="4dp"
             android:text="@string/calender_fri_text"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -126,8 +127,8 @@
             android:gravity="center"
             android:padding="4dp"
             android:text="@string/calender_sat_text"
-            android:textSize="20sp"
-            android:textColor="@color/teal_700" />
+            android:textColor="@color/teal_700"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -136,9 +137,9 @@
         android:id="@+id/gridLayout_calender_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:columnCount="7"
-        android:rowCount="6"
-        android:layout_marginTop="8dp">
+        android:rowCount="6">
 
         <!-- 날짜 텍스트 뷰들이 동적 추가될 예정 -->
     </GridLayout>
