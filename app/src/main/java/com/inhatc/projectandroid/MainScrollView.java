@@ -21,6 +21,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+//선택된 날짜 및 지역(city)에 대한 날씨 정보를 API에서 받아와 화면 내 LinearLayout에 최대 8개의 예보 정보를 표시하는 클래스
 public class MainScrollView {
     private final Context context;
     private final String city;
@@ -36,6 +38,7 @@ public class MainScrollView {
         this.linearLayoutMain = linearLayoutMain;
     }
 
+    // 날씨 예보 API 호출 및 UI 업데이트 시작
     public void getWeatherForecast() {
         Call<WeatherForecastResponse> call = ApiClient.getWeatherApiService().getWeatherForecast(city, apiKey, "metric");
 
@@ -51,6 +54,7 @@ public class MainScrollView {
                     int count = 0;
                     for (Forecast forecast : forecastList) {
                         String dtTxt = forecast.getDt_txt();
+                        // 현재 날짜 또는 다음날 데이터 중 시간 순으로 필터링
                         if (dtTxt.startsWith(selectedDate) || dtTxt.startsWith(nextDate)) {
                             Date forecastTime = parseUtcToKstTime(dtTxt);
                             if (forecastTime != null && forecastTime.getTime() >= currentTimeMillis) {
@@ -73,6 +77,7 @@ public class MainScrollView {
         });
     }
 
+    // UTC 시간을 KST 시간으로 변환
     private Date parseUtcToKstTime(String utcDateTime) {
         try {
             SimpleDateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
@@ -88,7 +93,9 @@ public class MainScrollView {
         }
     }
 
+    // 날씨 정보를 화면의 각 위치(index)에 해당하는 View에 반영
     private void updateWeatherUI(Forecast forecast, int index) {
+        // UI 컴포넌트 ID 배열
         int[] timeIds = {
                 R.id.textview_mainScrollItem_time1, R.id.textview_mainScrollItem_time2,
                 R.id.textview_mainScrollItem_time3, R.id.textview_mainScrollItem_time4,
@@ -124,12 +131,14 @@ public class MainScrollView {
                 R.id.textview_mainScrollItem_rainText7, R.id.textview_mainScrollItem_rainText8
         };
 
+        // View 객체 가져오기
         TextView timeView = linearLayoutMain.findViewById(timeIds[index]);
         TextView tempView = linearLayoutMain.findViewById(tempIds[index]);
         ImageView iconView = linearLayoutMain.findViewById(iconIds[index]);
         TextView descView = linearLayoutMain.findViewById(descIds[index]);
         TextView rainView = linearLayoutMain.findViewById(rainIds[index]);
 
+        // 시간, 아이콘 코드, 설명, 강수 확률 추출
         Date kstDate = parseUtcToKstTime(forecast.getDt_txt());
         String formattedTime = (kstDate != null) ? new SimpleDateFormat("HH:mm", Locale.getDefault()).format(kstDate) : "알 수 없음";
 
@@ -138,6 +147,7 @@ public class MainScrollView {
         String description = getWeatherDescriptionInKorean(iconCode);
         String iconUrl = "https://openweathermap.org/img/wn/" + category + "@2x.png";
 
+        // UI 반영
         timeView.setText(formattedTime);
         tempView.setText(String.format(Locale.getDefault(), "%.1f°C", forecast.getMain().getTemp()));
         rainView.setText(String.format(Locale.getDefault(), "%.0f%%", forecast.getPop() * 100));
@@ -146,6 +156,7 @@ public class MainScrollView {
         Glide.with(context).load(iconUrl).into(iconView);
     }
 
+    // 다음 날짜(yyyy-MM-dd)를 문자열로 반환
     private String getNextDateString(String selectedDate) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -160,6 +171,7 @@ public class MainScrollView {
         }
     }
 
+    // 날씨 아이콘 코드에 따라 OpenWeather용 정규화된 카테고리 반환
     private String getWeatherCategory(String iconCode) {
         switch (iconCode) {
             case "01d": case "01n": return "01d";
@@ -173,6 +185,7 @@ public class MainScrollView {
         }
     }
 
+    // 날씨 아이콘 코드에 따른 한국어 설명 반환
     private String getWeatherDescriptionInKorean(String iconCode) {
         switch (iconCode) {
             case "01d": case "01n": return "맑은 날씨 ";

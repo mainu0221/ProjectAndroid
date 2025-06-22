@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+// RecyclerView 어댑터 클래스 - 저장된 날씨 알림 항목들을 표시
 public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.WeatherListViewHolder> {
 
+    // 삭제 이벤트를 처리하기 위한 콜백 인터페이스
     public interface OnItemDeleteListener {
         void onDelete(long wNo);
     }
@@ -33,16 +35,19 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         return new WeatherListViewHolder(view);
     }
 
+    // 데이터 바인딩
     @Override
     public void onBindViewHolder(@NonNull WeatherListViewHolder holder, int position) {
         holder.bind(items.get(position));
     }
 
+    // 전체 아이템 개수 반환
     @Override
     public int getItemCount() {
         return items.size();
     }
 
+    // 각 항목의 ViewHolder 클래스
     public class WeatherListViewHolder extends RecyclerView.ViewHolder {
         private final TextView contents;
         private final ImageView weather;
@@ -57,12 +62,16 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
             deleteButton = itemView.findViewById(R.id.button_weatherItem_delete);
         }
 
+        // ViewHolder에 데이터 바인딩 수행
         public void bind(WeatherListItem item) {
             contents.setText(item.getContents());
             time.setText(item.getTime());
+            // 날씨 설명에 따라 아이콘 변경
             weather.setImageResource(getWeatherIconId(item.getWeather()));
+            // 이미 알림이 전송된 항목은 반투명 처리
             itemView.setAlpha(item.isNotified() ? 0.5f : 1.0f);
 
+            // 삭제 버튼 클릭 시 콜백 실행
             deleteButton.setOnClickListener(v -> {
                 if (deleteListener != null) {
                     deleteListener.onDelete(item.getWNo());
@@ -70,6 +79,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
             });
         }
 
+        // 날씨 설명 문자열에 따라 아이콘 리소스 ID 반환
         private int getWeatherIconId(String weatherDescription) {
             switch (weatherDescription) {
                 case "clear sky": return R.drawable.weather_sun_icon;

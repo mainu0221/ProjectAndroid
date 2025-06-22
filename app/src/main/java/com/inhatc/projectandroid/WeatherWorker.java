@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+// 날씨 알림을 주기적으로 확인하고 조건이 충족되면 푸시 알림을 전송하는 백그라운드 작업 클래스
 public class WeatherWorker extends Worker {
 
     private final LocalDatabase database;
@@ -36,23 +37,24 @@ public class WeatherWorker extends Worker {
     @Override
     public Result doWork() {
         try {
-            String selectedRegion = sharedPreferences.getString("selectedRegion", "Seoul");
-            if (selectedRegion == null) selectedRegion = "Seoul";
+            String selectedRegion = "Seoul";
 
+            // 별도 스레드에서 알림 확인 실행
             ExecutorService executor = Executors.newSingleThreadExecutor();
-            String finalSelectedRegion = selectedRegion;
             executor.execute(() -> {
                 try {
-                    notificationManager.checkWeatherConditions(apiService, apiKey, finalSelectedRegion);
+                    notificationManager.checkWeatherConditions(apiService, apiKey, selectedRegion);
                 } catch (Exception e) {
                     Log.e("WeatherWorker", "Notification check failed: " + e.getMessage());
                 }
             });
 
+            // 스레드 종료 대기 (최대 1분)
             executor.shutdown();
             executor.awaitTermination(1, TimeUnit.MINUTES);
 
             Log.d("WeatherWorker", "작업 성공적으로 완료");
+            // 다음 실행 예약
             scheduleNextRun();
             return Result.success();
 

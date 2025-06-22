@@ -59,23 +59,28 @@ public class MainActivity extends AppCompatActivity {
         setupCalendarControls();
         updateCalendar();
 
+        // 오늘 날짜 강조 및 초기 표시
         Calendar today = Calendar.getInstance();
         updateSelectedDateText(today);
 
+        // 날씨 알림 매니저 초기화
         weatherNotificationManager = new WeatherNotificationManager(this, LocalDatabase.getDatabase(this));
 
+        // 최초 실행 시 알림 예약
         if (!sharedPreferences.getBoolean("isNotificationScheduled", false)) {
             scheduleWeatherNotifications();
             sharedPreferences.edit().putBoolean("isNotificationScheduled", true).apply();
         }
     }
 
+    //지역 설정이 없으면 기본값으로 "Seoul" 저장
     private void initializeDefaultSharedPreferences() {
         if (!sharedPreferences.contains("selectedRegion")) {
             sharedPreferences.edit().putString("selectedRegion", "Seoul").apply();
         }
     }
 
+    //알림 권한 요청 (Android 13 이상)
     private void requestNotificationPermissionIfNeeded() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
@@ -86,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // 권한 요청 결과 처리
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -98,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // 매 정각에 날씨 알림 예약
     private void scheduleWeatherNotifications() {
         long initialDelay = calculateInitialDelay();
         OneTimeWorkRequest notificationRequest = new OneTimeWorkRequest.Builder(WeatherWorker.class)
@@ -111,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+    // 다음 정각까지 남은 시간 계산
     private long calculateInitialDelay() {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.HOUR_OF_DAY, 1);
@@ -136,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         displayDaysInGrid();
     }
 
+    // 달력에 날짜 표시 및 각 날짜별 처리
     private void displayDaysInGrid() {
         gridCalendar.removeAllViews();
         calendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -143,15 +152,13 @@ public class MainActivity extends AppCompatActivity {
         int maxDaysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int prevMonthDays = firstDayOfWeek - 1;
         Calendar today = Calendar.getInstance();
-
         for (int i = 1; i <= prevMonthDays + maxDaysInMonth; i++) {
             TextView dayTextView = createDayTextView(i, prevMonthDays);
-
             if (!dayTextView.getText().toString().isEmpty()) {
                 int day = Integer.parseInt(dayTextView.getText().toString());
                 int correctedDayOfWeek = (prevMonthDays + day) % 7;
                 correctedDayOfWeek = (correctedDayOfWeek == 0) ? 7 : correctedDayOfWeek;
-
+                // 요일별 색상 적용
                 int color;
                 switch (correctedDayOfWeek) {
                     case 1:
@@ -165,11 +172,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 dayTextView.setTextColor(color);
-
+                // 오늘 날짜 강조
                 if (isToday(calendar, today, String.valueOf(day))) {
                     dayTextView.setTextColor(ContextCompat.getColor(this, R.color.Today));
                 }
-
+                // 일정 존재 시 밑줄 표시
                 Calendar currentCalendar = Calendar.getInstance();
                 currentCalendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), day);
                 String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(currentCalendar.getTime());
@@ -181,12 +188,13 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             }
-
+            // 날짜 클릭 이벤트
             dayTextView.setOnClickListener(view -> onDaySelected(dayTextView));
             gridCalendar.addView(dayTextView);
         }
     }
 
+    // 달력에 표시될 개별 날짜를 생성하는 메서드
     private TextView createDayTextView(int dayIndex, int prevMonthDays) {
         TextView tv = new TextView(this);
         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
@@ -202,18 +210,20 @@ public class MainActivity extends AppCompatActivity {
         return tv;
     }
 
+    // 특정 날짜가 오늘인지 판단하는 메서드
     private boolean isToday(Calendar calendar, Calendar today, String dayText) {
         return calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR)
                 && calendar.get(Calendar.MONTH) == today.get(Calendar.MONTH)
                 && dayText.equals(String.valueOf(today.get(Calendar.DAY_OF_MONTH)));
     }
 
+    // 날짜 셀이 클릭되었을 때 처리하는 메서드
     private void onDaySelected(TextView dayTextView) {
         int selectedDay = Integer.parseInt(dayTextView.getText().toString());
         Calendar selectedDate = Calendar.getInstance();
         selectedDate.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), selectedDay);
         Calendar today = Calendar.getInstance();
-
+        // 이전에 선택된 셀이 있다면 색상 복구
         if (lastSelectedTextView != null) {
             int previousDay = Integer.parseInt(lastSelectedTextView.getText().toString());
             Calendar previousDate = Calendar.getInstance();
@@ -235,67 +245,54 @@ public class MainActivity extends AppCompatActivity {
             }
             lastSelectedTextView.setTextColor(resetColor);
         }
-
+        // 현재 선택된 날짜 셀 강조
         dayTextView.setTextColor(ContextCompat.getColor(this, R.color.Selected));
         lastSelectedTextView = dayTextView;
-
+        // 같은 날짜를 두 번 클릭하면 하단 시트 표시
         if (lastSelectedDay != null && lastSelectedDay == selectedDay) {
             Log.d("Double", "(" + selectedDay + ")");
             showBottomSheet(selectedDate);
         } else {
+            // 새로운 날짜 선택 처리
             lastSelectedDay = selectedDay;
             updateSelectedDateText(selectedDate);
         }
     }
 
+    // 날짜 상세정보를 보여주는 BottomSheet 다이얼로그 호출
     private void showBottomSheet(Calendar selectedDate) {
         String formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedDate.getTime());
         MainDateInfoActivity bottomSheet = new MainDateInfoActivity(formattedDate);
         bottomSheet.show(getSupportFragmentManager(), "DateInfoBottomSheet");
     }
 
+    // 상단 날짜 텍스트 및 날씨 스크롤뷰 업데이트
     private void updateSelectedDateText(Calendar selectedDate) {
-        String regionInKorean = getRegionInKorean(sharedPreferences);
-        String regionText = regionInKorean + " 날씨 정보 입니다.";
+        String regionText = "서울 날씨 정보 입니다.";
         String formatted = new SimpleDateFormat("  MM월 dd일 " + regionText, Locale.getDefault()).format(selectedDate.getTime());
         selectedDateTextView.setText(formatted);
         updateWeatherScrollView(sharedPreferences, selectedDate);
     }
 
-    private String getRegionInKorean(SharedPreferences sharedPreferences) {
-        Map<String, String> regionMap = new HashMap<>();
-        regionMap.put("서울", "Seoul"); regionMap.put("부산", "Busan"); regionMap.put("대구", "Daegu");
-        regionMap.put("인천", "Incheon"); regionMap.put("광주", "Gwangju"); regionMap.put("대전", "Daejeon");
-        regionMap.put("울산", "Ulsan"); regionMap.put("세종", "Sejong"); regionMap.put("경기도", "Gyeonggi-do");
-        regionMap.put("강원도", "Gangwon-do"); regionMap.put("충청북도", "Chungcheongbuk-do");
-        regionMap.put("충청남도", "Chungcheongnam-do"); regionMap.put("전라북도", "Jeollabuk-do");
-        regionMap.put("전라남도", "Jeollanam-do"); regionMap.put("경상북도", "Gyeongsangbuk-do");
-        regionMap.put("경상남도", "Gyeongsangnam-do"); regionMap.put("제주도", "Jeju-do");
-
-        String savedRegion = sharedPreferences.getString("selectedRegion", "Seoul");
-        for (Map.Entry<String, String> entry : regionMap.entrySet()) {
-            if (entry.getValue().equals(savedRegion)) {
-                return entry.getKey();
-            }
-        }
-        return "서울";
-    }
-
+    // 텍스트뷰에 현재 년/월 정보 표시
     private void updateMonthDisplay() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy 년 MM월", Locale.getDefault());
         tvCurrentMonth.setText(dateFormat.format(calendar.getTime()));
     }
 
+    // 이전/다음 달 이동 버튼 설정
     private void setupCalendarControls() {
         findViewById(R.id.imageButton_calender_monthLeft).setOnClickListener(v -> navigateMonth(-1));
         findViewById(R.id.imageButton_calender_monthRight).setOnClickListener(v -> navigateMonth(1));
     }
 
+    // 월 이동 후 달력 갱신
     private void navigateMonth(int offset) {
         calendar.add(Calendar.MONTH, offset);
         updateCalendar();
     }
 
+    // 메모가 추가되었을 때 달력 새로고침 리스너 설정
     private void setupResultListener() {
         getSupportFragmentManager().setFragmentResultListener("memoAdded", this, (key, bundle) -> {
             String addedDate = bundle.getString("addedDate");
@@ -306,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // 메모가 삭제되었을 때 달력 새로고침 리스너 설정
     private void setupDeleteListener() {
         getSupportFragmentManager().setFragmentResultListener("memoDeleted", this, (key, bundle) -> {
             String deletedDate = bundle.getString("deletedDate");
@@ -316,6 +314,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // 하단 네비게이션바 추가 및 화면 이동 처리
     private void setupBottomNavigation() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -333,6 +332,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // 선택된 날짜에 따라 날씨 예보 스크롤 뷰 업데이트
     private void updateWeatherScrollView(SharedPreferences sharedPreferences, Calendar selectedDate) {
         LinearLayout weatherScrollLayout = findViewById(R.id.linearLayout_main_in_scrollview);
         HorizontalScrollView parentScrollView = findViewById(R.id.scrollview_main_in_cardview);
