@@ -25,7 +25,7 @@ Triplan은 메모장, 캘린더, 날씨 정보가 분산되어 있는 불편함�
 
 
 
-✨ Key Features (핵심 기능)
+Key Features (핵심 기능)
 
 1. 📅 날씨 연동 스마트 캘린더
 
@@ -77,10 +77,17 @@ Triplan은 메모장, 캘린더, 날씨 정보가 분산되어 있는 불편함�
 
 com.example.triplan
 ├── activity       # 액티비티 (화면 로직)
+
 │   ├── MainActivity.java
+
 │   ├── WeatherActivity.java
+
 │   └── SettingActivity.java
+
 ├── adapter        # 리사이클러뷰 어댑터
+
 ├── database       # RoomDB Entity & DAO
+
 ├── network        # Retrofit API Interface
+
 └── utils          # 유틸리티 클래스
