@@ -33,7 +33,7 @@ Key Features (핵심 기능)
 
 구현: 사용자가 선택한 지역(Location)과 날짜(Date) 데이터를 기반으로 OpenWeatherAPI 데이터를 필터링하여 매칭
 
-![캘린더 화면](images/캘린더.jpg)
+<img src="/images/캘린더.jpg" width="400">
 
 2. 📝 직관적인 일정 관리 (CRUD)
 
@@ -41,7 +41,7 @@ Key Features (핵심 기능)
 
 구현: RoomDB를 활용하여 로컬 데이터베이스에 일정 데이터를 저장하고, 캘린더 UI에 실시간으로 반영 (일정이 있는 날짜는 밑줄 표시)
 
-![일정 추가](images/캘린더.jpg)
+<img src="/images/일정추가.jpg" width="400">
 
 3. ✅ 주기별 체크리스트 (Habit Tracker)
 
@@ -49,7 +49,7 @@ Key Features (핵심 기능)
 
 구현: SharedPreference 또는 DB를 활용하여 설정한 주기가 지나면 체크박스가 자동으로 초기화되도록 로직 구현
 
-![체크리스트 화면](images/체크리스트.jpg)
+<img src="/images/체크리스트.jpg" width="400">
 
 4. 🔔 날씨 맞춤형 알림
 
@@ -57,7 +57,7 @@ Key Features (핵심 기능)
 
 구현: 백그라운드 워커(Worker)를 통해 API 데이터를 주기적으로 확인하고 조건 충족 시 시스템 알림 트리거
 
-![날씨 화면](images/날씨알림.jpg)
+<img src="/images/날씨알림.jpg" width="400">
 
 🚀 Trouble Shooting & Learnings (트러블 슈팅 및 배운 점)
 
