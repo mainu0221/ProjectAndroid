@@ -81,21 +81,21 @@ Key Features (핵심 기능)
 
 호환 가능한 안정적인 버전으로 의존성을 변경하여 정상적으로 연동에 성공하였으며, 이 과정을 통해 외부 라이브러리 사용 시 버전 관리의 중요성을 깊이 이해하게 됨.
 
-📂 Project Structure (패키지 구조)
+💾 Database Structure (ERD 설계)
 
+<img src="/images/캘린더테이블.png" width="400">
+<img src="/images/날씨알림테이블.png" width="400">
+<img src="/images/체크리스트테이블.png" width="400">
+
+📂 Project Structure (패키지 구조)
+```bash
 com.example.triplan
 ├── activity       # 액티비티 (화면 로직)
-
 │   ├── MainActivity.java
-
 │   ├── WeatherActivity.java
-
 │   └── SettingActivity.java
-
 ├── adapter        # 리사이클러뷰 어댑터
-
 ├── database       # RoomDB Entity & DAO
-
 ├── network        # Retrofit API Interface
-
 └── utils          # 유틸리티 클래스
+```
